@@ -1,0 +1,63 @@
+int rad = 30;
+float xpos, ypos;
+float xspeed = 3;
+float yspeed = 3;
+int xdirection = 1;
+int ydirection = 1;
+
+int circ = 30;
+float x1pos, y1pos;
+float x1speed = 3;
+float y1speed = 3;
+int x1direction = 1;
+int y1direction = 1;
+
+
+void setup()
+{
+ size (600,400);
+ noStroke();
+ ellipseMode (RADIUS);
+ xpos = width/3;
+ ypos = height/2;
+ x1pos = width/4;
+ y1pos= height/4;
+}
+
+void draw()
+{
+ background(255);
+  
+xpos = xpos+(xspeed * xdirection);
+ypos = ypos+(yspeed * ydirection);
+x1pos = x1pos+(x1speed * x1direction);
+y1pos = y1pos+(y1speed * y1direction);
+ 
+if (xpos > width-rad||xpos<rad){
+  xdirection *=-1;
+}
+  if (ypos > height- rad ||ypos<rad){
+    ydirection *=-1;
+  }
+   
+if (x1pos > width-circ||x1pos<circ){
+  x1direction *=-1;
+}
+  if (y1pos > height- circ ||y1pos<circ){
+    y1direction *=-1;
+  }
+  ellipse(x1pos, y1pos, circ, circ);
+  fill(190);
+  
+  ellipse(xpos,ypos, rad, rad);
+  fill(100);
+}
+
+//set upso one circle would run. repeated stroke ran with the directional 
+//bounce from corner to corner. 
+//added no stroke and a backround, can no longer see circle so i added a
+//fill on the ellipse, made corder a ractangle to add more surface bounce. 
+//changing of the size made the bounary non existant. 
+//rewrote if statements conforming boiundaries. 
+//added second circle rewriting under separate code sets. 
+   
